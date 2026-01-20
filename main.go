@@ -43,11 +43,22 @@ func main() {
 			break
 		}
 
-		//	GetProduct(&p)
-
 	}
 
+	var Total Product
 	for _, v := range listProducts {
-		GetProduct(&v)
+		Total.calories += v.calories
+		Total.proteins += v.proteins
+		Total.fats += v.fats
+		Total.carbs += v.carbs
 	}
+
+	fmt.Println()
+	fmt.Print("----------Food intake----------")
+	GetProduct(&Total)
+	fmt.Println("-------------------------------")
+	// for _, v := range listProducts {
+	// 	GetProduct(&v)
+	// }
+
 }
