@@ -15,6 +15,7 @@ func main() {
 		fmt.Println("")
 		var p Product
 		var productNumber int
+
 		fmt.Print("Enter the number of the product you want to find: ")
 		fmt.Fscan(os.Stdin, &productNumber)
 		err := findProductByNumber(&p, productNumber)
@@ -47,15 +48,15 @@ func main() {
 
 	var Total Product
 	for _, v := range listProducts {
-		Total.calories += v.calories
-		Total.proteins += v.proteins
-		Total.fats += v.fats
-		Total.carbs += v.carbs
+		Total.calories += float64(v.gram) / 100 * v.calories
+		Total.proteins += float64(v.gram) / 100 * v.proteins
+		Total.fats += float64(v.gram) / 100 * v.fats
+		Total.carbs += float64(v.gram) / 100 * v.carbs
 	}
 
 	fmt.Println()
-	fmt.Print("----------Food intake----------")
-	GetProduct(&Total)
+	fmt.Println("----------Food intake----------")
+	GetTotal(&Total)
 	fmt.Println("-------------------------------")
 	// for _, v := range listProducts {
 	// 	GetProduct(&v)

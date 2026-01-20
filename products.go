@@ -64,12 +64,12 @@ func findProductByNumber(p *Product, productNumber int) error {
 		log.Fatal("Error to open file:", err)
 	}
 	scanner := bufio.NewScanner(file)
-	defer file.Close()
 	defer func() {
 		if err := scanner.Err(); err != nil {
 			log.Fatal(err)
 		}
 	}()
+	defer file.Close()
 
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -104,7 +104,10 @@ func findProductByNumber(p *Product, productNumber int) error {
 
 			}
 			if len(macrosFloat) == 4 {
-				p.addProduct(parts[1], macrosFloat[0], macrosFloat[1], macrosFloat[2], macrosFloat[3])
+				var gram int
+				fmt.Print("Input quantuty gram's: ")
+				fmt.Fscan(os.Stdin, &gram)
+				p.addProduct(parts[1], macrosFloat[0], macrosFloat[1], macrosFloat[2], macrosFloat[3], gram)
 			} else {
 				fmt.Println("Incorrect data. Don't point all the value of Macros")
 			}
