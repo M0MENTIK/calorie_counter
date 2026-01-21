@@ -78,13 +78,15 @@ func findProductByNumber(p *Product, productNumber int) error {
 			parts[i] = strings.TrimSpace(v)
 		}
 		if len(parts) != 3 {
-			return errors.New("Incorrect len of data")
+			continue
+			//return errors.New("Incorrect len of data")
 		}
 
 		// Comparison input value with value of database
 		number, err := strconv.Atoi(parts[0])
 		if err != nil {
-			log.Fatal("Error to conver string to int:", err)
+			continue
+			//log.Fatal("Error to conver string to int:", err)
 		}
 		//Если найден нужный продукт, выписываю КБЖУ, привожу к корректному виду и добавляю их в структуру
 		if number == productNumber {
@@ -105,6 +107,7 @@ func findProductByNumber(p *Product, productNumber int) error {
 			}
 			if len(macrosFloat) == 4 {
 				var gram int
+				fmt.Println("You enter:", parts[1])
 				fmt.Print("Input quantuty gram's: ")
 				fmt.Fscan(os.Stdin, &gram)
 				p.addProduct(parts[1], macrosFloat[0], macrosFloat[1], macrosFloat[2], macrosFloat[3], gram)

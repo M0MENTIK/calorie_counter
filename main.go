@@ -12,7 +12,6 @@ func main() {
 	//showListProducts()
 	listProducts := []Product{}
 	for {
-		fmt.Println("")
 		var p Product
 		var productNumber int
 
@@ -30,7 +29,7 @@ func main() {
 		var repeat string
 		for {
 
-			fmt.Print("\nAdding another product?(yes/no): ")
+			fmt.Print("Adding another product?(yes/no): ")
 			fmt.Fscan(os.Stdin, &repeat)
 			if repeat == "yes" || repeat == "no" {
 				break
@@ -61,5 +60,8 @@ func main() {
 	// for _, v := range listProducts {
 	// 	GetProduct(&v)
 	// }
+	fmt.Print("Write anything and push 'Enter' to be exit: ")
+	var t string
+	fmt.Fscan(os.Stdin, &t)
 
 }
